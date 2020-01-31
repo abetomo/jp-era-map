@@ -5,6 +5,16 @@ import (
 	"testing"
 )
 
+func TestMeiji(t *testing.T) {
+	for i := 1; i <= 45; i++ {
+		actual := JpEraMap[fmt.Sprintf("M%02d", i)]
+		expected := 1868 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
 func TestTaisho(t *testing.T) {
 	for i := 1; i <= 15; i++ {
 		actual := JpEraMap[fmt.Sprintf("T%02d", i)]
