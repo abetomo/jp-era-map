@@ -5,6 +5,16 @@ import (
 	"testing"
 )
 
+func TestTaisho(t *testing.T) {
+	for i := 1; i <= 15; i++ {
+		actual := JpEraMap[fmt.Sprintf("T%02d", i)]
+		expected := 1912 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
 func TestShowa(t *testing.T) {
 	for i := 1; i <= 64; i++ {
 		actual := JpEraMap[fmt.Sprintf("S%02d", i)]
