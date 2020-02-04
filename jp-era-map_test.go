@@ -23,6 +23,32 @@ func TestMeijiErr(t *testing.T) {
 	}
 }
 
+func TestFuncMeiji(t *testing.T) {
+	for i := 1; i <= 45; i++ {
+		actual := JpEra(fmt.Sprintf("M%02d", i))
+		expected := 1868 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+
+	for i := 1; i <= 45; i++ {
+		actual := JpEra(fmt.Sprintf("1%02d", i))
+		expected := 1868 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
+func TestFuncMeijiErr(t *testing.T) {
+	actual := JpEra("146")
+	expected := 0
+	if actual != expected {
+		t.Fatalf("%v not match %v", actual, expected)
+	}
+}
+
 func TestTaisho(t *testing.T) {
 	for i := 1; i <= 15; i++ {
 		actual := JpEraMap[fmt.Sprintf("T%02d", i)]
@@ -35,6 +61,32 @@ func TestTaisho(t *testing.T) {
 
 func TestTaishoErr(t *testing.T) {
 	actual := JpEraMap["T16"]
+	expected := 0
+	if actual != expected {
+		t.Fatalf("%v not match %v", actual, expected)
+	}
+}
+
+func TestFuncTaisho(t *testing.T) {
+	for i := 1; i <= 15; i++ {
+		actual := JpEra(fmt.Sprintf("T%02d", i))
+		expected := 1912 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+
+	for i := 1; i <= 15; i++ {
+		actual := JpEra(fmt.Sprintf("2%02d", i))
+		expected := 1912 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
+func TestFuncTaishoErr(t *testing.T) {
+	actual := JpEra("216")
 	expected := 0
 	if actual != expected {
 		t.Fatalf("%v not match %v", actual, expected)
@@ -59,6 +111,32 @@ func TestShowaErr(t *testing.T) {
 	}
 }
 
+func TestFuncShowa(t *testing.T) {
+	for i := 1; i <= 64; i++ {
+		actual := JpEra(fmt.Sprintf("S%02d", i))
+		expected := 1926 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+
+	for i := 1; i <= 64; i++ {
+		actual := JpEra(fmt.Sprintf("3%02d", i))
+		expected := 1926 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
+func TestFuncShowaErr(t *testing.T) {
+	actual := JpEraMap["365"]
+	expected := 0
+	if actual != expected {
+		t.Fatalf("%v not match %v", actual, expected)
+	}
+}
+
 func TestHeisei(t *testing.T) {
 	for i := 1; i <= 31; i++ {
 		actual := JpEraMap[fmt.Sprintf("H%02d", i)]
@@ -77,6 +155,32 @@ func TestHeiseiErr(t *testing.T) {
 	}
 }
 
+func TestFuncHeisei(t *testing.T) {
+	for i := 1; i <= 31; i++ {
+		actual := JpEra(fmt.Sprintf("H%02d", i))
+		expected := 1989 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+
+	for i := 1; i <= 31; i++ {
+		actual := JpEra(fmt.Sprintf("4%02d", i))
+		expected := 1989 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
+func TestFuncHeiseiErr(t *testing.T) {
+	actual := JpEra("432")
+	expected := 0
+	if actual != expected {
+		t.Fatalf("%v not match %v", actual, expected)
+	}
+}
+
 func TestReiwa(t *testing.T) {
 	for i := 1; i <= 20; i++ {
 		actual := JpEraMap[fmt.Sprintf("R%02d", i)]
@@ -89,6 +193,32 @@ func TestReiwa(t *testing.T) {
 
 func TestReiwaErr(t *testing.T) {
 	actual := JpEraMap["R99"]
+	expected := 0
+	if actual != expected {
+		t.Fatalf("%v not match %v", actual, expected)
+	}
+}
+
+func TestFuncReiwa(t *testing.T) {
+	for i := 1; i <= 20; i++ {
+		actual := JpEra(fmt.Sprintf("R%02d", i))
+		expected := 2019 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+
+	for i := 1; i <= 20; i++ {
+		actual := JpEra(fmt.Sprintf("5%02d", i))
+		expected := 2019 + (i - 1)
+		if actual != expected {
+			t.Fatalf("%v not match %v", actual, expected)
+		}
+	}
+}
+
+func TestFuncReiwaErr(t *testing.T) {
+	actual := JpEra("599")
 	expected := 0
 	if actual != expected {
 		t.Fatalf("%v not match %v", actual, expected)

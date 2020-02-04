@@ -181,3 +181,21 @@ var JpEraMap = map[string]int{
 	"R19": 2037,
 	"R20": 2038,
 }
+
+func JpEra(wareki string) int {
+	prefix := string([]rune(wareki)[0:1])
+	n := string([]rune(wareki)[1:])
+	switch prefix {
+	case "1":
+		return JpEraMap["M"+n]
+	case "2":
+		return JpEraMap["T"+n]
+	case "3":
+		return JpEraMap["S"+n]
+	case "4":
+		return JpEraMap["H"+n]
+	case "5":
+		return JpEraMap["R"+n]
+	}
+	return JpEraMap[wareki]
+}
