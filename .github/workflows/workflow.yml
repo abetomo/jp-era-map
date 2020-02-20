@@ -1,9 +1,9 @@
 name: Test
 on: [push, pull_request]
 jobs:
-
   test:
     strategy:
+      fail-fast: false
       matrix:
         go-version: [1.12.x, 1.13.x]
         platform: [ubuntu-latest, macos-latest, windows-latest]
