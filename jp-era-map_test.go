@@ -182,7 +182,7 @@ func TestFuncHeiseiErr(t *testing.T) {
 }
 
 func TestReiwa(t *testing.T) {
-	for i := 1; i <= 20; i++ {
+	for i := 1; i <= 50; i++ {
 		actual := JpEraMap[fmt.Sprintf("R%02d", i)]
 		expected := 2019 + (i - 1)
 		if actual != expected {
@@ -200,7 +200,7 @@ func TestReiwaErr(t *testing.T) {
 }
 
 func TestFuncReiwa(t *testing.T) {
-	for i := 1; i <= 20; i++ {
+	for i := 1; i <= 50; i++ {
 		actual := JpEra(fmt.Sprintf("R%02d", i))
 		expected := 2019 + (i - 1)
 		if actual != expected {
