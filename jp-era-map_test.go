@@ -254,3 +254,9 @@ func TestFuncReiwa(t *testing.T) {
 		}
 	})
 }
+
+func ExampleJpEra() {
+	year := JpEra("R01")
+	fmt.Println(year)
+	// Output: 2019
+}
