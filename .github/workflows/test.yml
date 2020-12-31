@@ -14,4 +14,4 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - uses: actions/checkout@master
     - run: go build -v .
-    - run: go test -v
+    - run: go test -v -cover
