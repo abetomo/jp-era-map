@@ -255,6 +255,14 @@ func TestFuncReiwa(t *testing.T) {
 	})
 }
 
+func ExampleJpEraMap() {
+	fmt.Printf("%d\n", JpEraMap["S24"])
+	fmt.Printf("%d\n", JpEraMap["H24"])
+	// Output:
+	// 1949
+	// 2012
+}
+
 func ExampleJpEra() {
 	year := JpEra("R01")
 	fmt.Println(year)
