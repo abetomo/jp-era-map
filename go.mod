@@ -1,3 +1,3 @@
 module github.com/abetomo/jp-era-map
 
-go 1.14
+go 1.16
