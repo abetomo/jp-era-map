@@ -21,7 +21,9 @@ func main() {
 ## Example: JpEra()
 
 ```go
-year := JpEra("R01")
-fmt.Println(year)
-// Output: 2019
+fmt.Println(JpEra("大正3年"))
+fmt.Println(JpEra("R01"))
+// Output:
+// 1914
+// 2019
 ```

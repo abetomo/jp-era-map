@@ -1,5 +1,9 @@
 package jperamap
 
+import (
+	"golang.org/x/text/width"
+)
+
 var JpEraMap = map[string]int{
 	"M01": 1868,
 	"M02": 1869,
@@ -213,18 +217,40 @@ var JpEraMap = map[string]int{
 }
 
 func JpEra(wareki string) int {
-	prefix := string([]rune(wareki)[0:1])
-	n := string([]rune(wareki)[1:])
-	switch prefix {
-	case "1":
+	chars := []rune(wareki)
+	if len(chars) < 3 {
+		return 0
+	}
+
+	n := (func() string {
+		if chars[len(chars)-1] == '年' {
+			n := "0" + width.Narrow.String(string(chars[2:len(chars)-1]))
+			return n[len(n)-2:]
+		}
+		return string(chars[1:])
+	})()
+
+	switch chars[0] {
+	case '1':
 		return JpEraMap["M"+n]
-	case "2":
+	case '2':
 		return JpEraMap["T"+n]
-	case "3":
+	case '3':
 		return JpEraMap["S"+n]
-	case "4":
+	case '4':
 		return JpEraMap["H"+n]
-	case "5":
+	case '5':
+		return JpEraMap["R"+n]
+
+	case '明':
+		return JpEraMap["M"+n]
+	case '大':
+		return JpEraMap["T"+n]
+	case '昭':
+		return JpEraMap["S"+n]
+	case '平':
+		return JpEraMap["H"+n]
+	case '令':
 		return JpEraMap["R"+n]
 	}
 	return JpEraMap[wareki]

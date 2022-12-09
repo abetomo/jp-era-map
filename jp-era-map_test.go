@@ -3,6 +3,8 @@ package jperamap
 import (
 	"fmt"
 	"testing"
+
+	"golang.org/x/text/width"
 )
 
 func TestMeiji(t *testing.T) {
@@ -39,6 +41,40 @@ func TestFuncMeiji(t *testing.T) {
 	t.Run("JpEra(): prefix is a number", func(t *testing.T) {
 		for i := 1; i <= 45; i++ {
 			actual := JpEra(fmt.Sprintf("1%02d", i))
+			expected := 1868 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+	})
+
+	t.Run("JpEra(): JP text", func(t *testing.T) {
+		for i := 1; i <= 45; i++ {
+			actual := JpEra(fmt.Sprintf("明治%02d年", i))
+			expected := 1868 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 45; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("明治%02d年", i)))
+			expected := 1868 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 45; i++ {
+			actual := JpEra(fmt.Sprintf("明治%d年", i))
+			expected := 1868 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 45; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("明治%d年", i)))
 			expected := 1868 + (i - 1)
 			if actual != expected {
 				t.Fatalf("%v not match %v", actual, expected)
@@ -96,6 +132,40 @@ func TestFuncTaisho(t *testing.T) {
 		}
 	})
 
+	t.Run("JpEra(): JP text", func(t *testing.T) {
+		for i := 1; i <= 15; i++ {
+			actual := JpEra(fmt.Sprintf("大正%02d年", i))
+			expected := 1912 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 15; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("大正%02d年", i)))
+			expected := 1912 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 15; i++ {
+			actual := JpEra(fmt.Sprintf("大正%d年", i))
+			expected := 1912 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 15; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("大正%d年", i)))
+			expected := 1912 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+	})
+
 	t.Run("JpEra(): no data exists", func(t *testing.T) {
 		actual := JpEra("216")
 		expected := 0
@@ -139,6 +209,40 @@ func TestFuncShowa(t *testing.T) {
 	t.Run("JpEra(): prefix is a number", func(t *testing.T) {
 		for i := 1; i <= 64; i++ {
 			actual := JpEra(fmt.Sprintf("3%02d", i))
+			expected := 1926 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+	})
+
+	t.Run("JpEra(): JP text", func(t *testing.T) {
+		for i := 1; i <= 64; i++ {
+			actual := JpEra(fmt.Sprintf("昭和%02d年", i))
+			expected := 1926 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 64; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("昭和%02d年", i)))
+			expected := 1926 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 64; i++ {
+			actual := JpEra(fmt.Sprintf("昭和%d年", i))
+			expected := 1926 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 64; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("昭和%d年", i)))
 			expected := 1926 + (i - 1)
 			if actual != expected {
 				t.Fatalf("%v not match %v", actual, expected)
@@ -196,6 +300,40 @@ func TestFuncHeisei(t *testing.T) {
 		}
 	})
 
+	t.Run("JpEra(): JP text", func(t *testing.T) {
+		for i := 1; i <= 31; i++ {
+			actual := JpEra(fmt.Sprintf("平成%02d年", i))
+			expected := 1989 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 31; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("平成%02d年", i)))
+			expected := 1989 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 31; i++ {
+			actual := JpEra(fmt.Sprintf("平成%d年", i))
+			expected := 1989 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 31; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("平成%d年", i)))
+			expected := 1989 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+	})
+
 	t.Run("JpEra(): no data exists", func(t *testing.T) {
 		actual := JpEra("432")
 		expected := 0
@@ -237,8 +375,42 @@ func TestFuncReiwa(t *testing.T) {
 	})
 
 	t.Run("JpEra(): prefix is a number", func(t *testing.T) {
-		for i := 1; i <= 20; i++ {
+		for i := 1; i <= 50; i++ {
 			actual := JpEra(fmt.Sprintf("5%02d", i))
+			expected := 2019 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+	})
+
+	t.Run("JpEra(): JP text", func(t *testing.T) {
+		for i := 1; i <= 50; i++ {
+			actual := JpEra(fmt.Sprintf("令和%02d年", i))
+			expected := 2019 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 50; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("令和%02d年", i)))
+			expected := 2019 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 50; i++ {
+			actual := JpEra(fmt.Sprintf("令和%d年", i))
+			expected := 2019 + (i - 1)
+			if actual != expected {
+				t.Fatalf("%v not match %v", actual, expected)
+			}
+		}
+
+		for i := 1; i <= 50; i++ {
+			actual := JpEra(width.Widen.String(fmt.Sprintf("令和%d年", i)))
 			expected := 2019 + (i - 1)
 			if actual != expected {
 				t.Fatalf("%v not match %v", actual, expected)
@@ -264,7 +436,9 @@ func ExampleJpEraMap() {
 }
 
 func ExampleJpEra() {
-	year := JpEra("R01")
-	fmt.Println(year)
-	// Output: 2019
+	fmt.Println(JpEra("大正3年"))
+	fmt.Println(JpEra("R01"))
+	// Output:
+	// 1914
+	// 2019
 }
